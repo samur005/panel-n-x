@@ -7,8 +7,7 @@
 ---
 
 NX is a proxy management platform made of a **panel** (this repository) and
-any number of **nodes** ([`nx-panel/node`](https://github.com/nx-panel/node)).
-The panel is the single source of truth — users, protocols, templates, nodes,
+any number of **nodes**. The panel is the single source of truth — users, protocols, templates, nodes,
 subscriptions — and drives every node over mutual TLS. Nodes hold no database.
 
 This repository publishes the panel: its release binaries, container images,
@@ -17,13 +16,7 @@ installer and documentation. The source is not public.
 ## Install
 
 ```bash
-bash <(curl -fsSL https://nx-panel.org/install.sh)
-```
-
-Or straight from GitHub, without nx-panel.org:
-
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/nx-panel/panel/main/install.sh) --github
+bash <(curl -fsSL https://raw.githubusercontent.com/samur005/panel-n-x/main/install.sh)
 ```
 
 That is the whole install. It asks nothing: the script sets up the database and
@@ -51,8 +44,8 @@ adding your first node needs nothing staged by hand.
 ## Docker
 
 ```bash
-git clone https://github.com/nx-panel/panel
-cd panel/docker/sqlite      # or: cd panel/docker/postgres
+git clone https://github.com/samur005/panel-n-x
+cd panel-n-x/docker/sqlite      # or: cd panel-n-x/docker/postgres
 docker compose up -d
 docker compose logs panel | grep setup
 ```
@@ -63,9 +56,7 @@ every tagged release.
 A third stack, `docker/panel-and-node`, runs a node beside the panel on one
 server. It works, and it is **not recommended** — a node's address goes into
 every subscription link, so it publishes the panel's address to every user, and
-a node under load takes the panel down with it. The
-[install guide](https://docs.nx-panel.org/start/same-server) has the
-two-step start and the caveats.
+a node under load takes the panel down with it.
 
 ## Getting around it
 
@@ -140,7 +131,7 @@ first screen, choose *Restore a backup* instead of filling the form. The wizard
 is the only place a restore is possible before an account exists, which is
 exactly the state a fresh install is in. The licence comes with the backup but
 stays bound to the old host's fingerprint; **License → Move the licence to this
-machine** takes it across — see [moving to a new server](https://docs.nx-panel.org/use/licence).
+machine** takes it across.
 
 The schedule is also settable from the command line, which is what a headless or
 scripted install wants:
@@ -165,7 +156,7 @@ Two different questions decide what an account reaches: **permissions decide
 which pages**, and **ownership decides which users** — a reseller sees the
 accounts it owns whatever its permissions say. One account **owns** the panel:
 it cannot be deleted or demoted, and only it can hand the panel to another main
-admin. See [operators and roles](https://docs.nx-panel.org/use/roles).
+admin.
 
 Operator accounts are the panel's, not the browser's. Sessions are stored, so a
 restart or an update logs nobody out, and each operator can see their own open
@@ -213,29 +204,9 @@ Entry names come from a template (`{USER} · {ROUTE} · {REMAINING}`) with a
 server-rendered preview, and the response carries the headers clients actually
 read — title, quota, update interval, announcement, support link.
 
-See [links and subscriptions](https://docs.nx-panel.org/use/subscriptions) for all of it, including
-what a CDN cannot carry (REALITY, QUIC, port hopping) and why the panel refuses
-those pairs when you save them rather than dropping them silently later.
-
 ## Documentation
 
-Everything about installing and running NX is on
-**[docs.nx-panel.org](https://docs.nx-panel.org)**, with screenshots,
-search and four languages:
-[English](https://docs.nx-panel.org/) ·
-[فارسی](https://docs.nx-panel.org/fa/) ·
-[Русский](https://docs.nx-panel.org/ru/) ·
-[中文](https://docs.nx-panel.org/zh/).
-
-| | |
-| --- | --- |
-| [Get started](https://docs.nx-panel.org/start/) | install the panel, the setup wizard, add a node, the first user |
-| [Use the panel](https://docs.nx-panel.org/use/) | every page of the panel |
-| [Protocols](https://docs.nx-panel.org/protocols/) | each inbound type and the apps that read it |
-| [How it works](https://docs.nx-panel.org/how/) | the architecture, the path of a packet, sync, tunnels, events |
-| [Reference](https://docs.nx-panel.org/reference/cli) | command line, files and ports, events, the API |
-
-The `docs/` folder here only points to the site.
+Documentation is in the `docs/` folder of this repository.
 
 ## Releases
 
@@ -284,11 +255,8 @@ See `nx-panel help` for the full command list.
 
 ## Support
 
-- **Bugs and feature requests** — [open an issue here](https://github.com/nx-panel/panel/issues).
-  Node issues belong in [`nx-panel/node`](https://github.com/nx-panel/node/issues).
-- **Security vulnerabilities** — report them privately through
-  [the organisation's security advisories](https://github.com/nx-panel/.github/security/advisories/new).
-  Please do not open a public issue for those.
+- **Bugs and feature requests** — [open an issue here](https://github.com/samur005/panel-n-x/issues).
+- **Security vulnerabilities** — report them privately by opening a private issue or contacting the maintainer.
 
 ## Licence
 
@@ -298,5 +266,4 @@ node with the full feature set, so everything can be evaluated before buying;
 a licence caps users and nodes and nothing else. It is bought, renewed,
 upgraded and moved from the panel's own **License** page — the licence
 installs itself, with no key to paste — and is bound to the panel host's
-hardware fingerprint, which `nx-panel hwid` prints. See
-[the licence](https://docs.nx-panel.org/use/licence).
+hardware fingerprint, which `nx-panel hwid` prints.
