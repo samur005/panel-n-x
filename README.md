@@ -129,9 +129,7 @@ the undo.
 **Moving to a new server:** install the panel there and, on the setup wizard's
 first screen, choose *Restore a backup* instead of filling the form. The wizard
 is the only place a restore is possible before an account exists, which is
-exactly the state a fresh install is in. The licence comes with the backup but
-stays bound to the old host's fingerprint; **License → Move the licence to this
-machine** takes it across.
+exactly the state a fresh install is in.
 
 The schedule is also settable from the command line, which is what a headless or
 scripted install wants:
@@ -260,10 +258,5 @@ See `nx-panel help` for the full command list.
 
 ## Licence
 
-NX Panel is proprietary software, licensed per installation — see
-[LICENSE](LICENSE). Without one it runs on a **free tier** of 25 users and 1
-node with the full feature set, so everything can be evaluated before buying;
-a licence caps users and nodes and nothing else. It is bought, renewed,
-upgraded and moved from the panel's own **License** page — the licence
-installs itself, with no key to paste — and is bound to the panel host's
-hardware fingerprint, which `nx-panel hwid` prints.
+NX Panel is free software with no restrictions on the number of users or nodes — see
+[LICENSE](LICENSE). Use it for any purpose without limits.
